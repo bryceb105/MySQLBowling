@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Bowler>
+ @*List out Teams*@
+<h1>Bowlers Contact List</h1>
+<br/>
+<div id="type">
+    <vc:type></vc:type>
+</div>
+
+@*Conact List*@
+@foreach (var b in Model)
+{
+<div class="card car-outline-primary m-1 p1">
+    <div>
+        <h3 class="mb-0">@b.BowlerFirstName @b.BowlerMiddleInit @b.BowlerLastName</h3>
+        <h6>Team: @b.Team.TeamName</h6>
+
+    </div>
+    <div>
+        <b>Contact Information:</b>
+        <ul style="list-style-type:none;">
+            <li>Address: @b.BowlerAddress</li>
+            <li>City: @b.BowlerCity</li>
+            <li>Stake: @b.BowlerState</li>
+            <li>Zip Code: @b.BowlerZip</li>
+            <li>Phone Number: @b.BowlerPhoneNumber</li>
+        </ul>
+            <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@b.BowlerID">Edit</a>
+            <a class="btn btn-sm btn-danger" asp-controller="Home" asp-action="Delete" asp-route-bowlerid="@b.BowlerID">Delete</a>
+    </div>
+</div>
+}
